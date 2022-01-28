@@ -1,5 +1,5 @@
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import appConfig from "../config.json";
 import { useRouter } from "next/router";
 
@@ -21,7 +21,18 @@ function Titulo(props) {
 
 export default function PaginaInicial() {
   const [username, setUsername] = useState("cesant3");
+  const [data, setData] = useState(username);
   const router = useRouter();
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${username}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      })
+      .catch((error) => console.error(error));
+  }, [username]);
 
   return (
     <>
@@ -30,7 +41,6 @@ export default function PaginaInicial() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          // backgroundColor: appConfig.theme.colors.primary['050'],
           backgroundImage: "url(https://wallpaperaccess.com/full/1369947.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -76,11 +86,20 @@ export default function PaginaInicial() {
             <Text
               variant="body3"
               styleSheet={{
-                marginBottom: "32px",
+                marginBottom: "12px",
                 color: appConfig.theme.colors.neutrals[300],
               }}
             >
               {appConfig.name}
+            </Text>
+            <Text
+              variant="body3"
+              styleSheet={{
+                marginBottom: "32px",
+                color: appConfig.theme.colors.neutrals[300],
+              }}
+            >
+              O chat para fãs de Red Dead Redemption
             </Text>
 
             <TextField
@@ -146,6 +165,19 @@ export default function PaginaInicial() {
               }}
             >
               {username}
+            </Text>
+            <Text
+              variant="body4"
+              styleSheet={{
+                color: appConfig.theme.colors.neutrals[200],
+                backgroundColor: appConfig.theme.colors.neutrals[900],
+                padding: "3px 12px",
+                margin: "4px 0",
+                width: "190px",
+                borderRadius: "1000px",
+              }}
+            >
+              seguidores: {data.followers} - seguindo: {data.following}
             </Text>
           </Box>
           {/* Photo Area */}
