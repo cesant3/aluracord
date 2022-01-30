@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import appConfig from "../config.json";
 import { useRouter } from "next/router";
 
+
 function Titulo(props) {
   const Tag = props.tag;
   return (
