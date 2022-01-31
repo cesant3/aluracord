@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
-import { SUPABASE_ANNON_KEY, SUPABASE_URL } from "../supabaseConfig";
+import { SUPABASE_ANNON_KEY, SUPABASE_URL } from "../supabase/supabaseConfig";
 
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANNON_KEY);
 
