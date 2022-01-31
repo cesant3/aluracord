@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import appConfig from "../config.json";
 import { useRouter } from "next/router";
 
-
 function Titulo(props) {
   const Tag = props.tag;
   return (
@@ -42,7 +41,8 @@ export default function PaginaInicial() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage: "url(https://wallpaperaccess.com/full/1369947.jpg)",
+          backgroundImage:
+            "url(https://i0.wp.com/windowscustomization.com/wp-content/uploads/2018/11/rdr2-dynamic.gif?fit=750%2C364&quality=80&strip=all&ssl=1)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundBlendMode: "multiply",
@@ -71,7 +71,7 @@ export default function PaginaInicial() {
             as="form"
             onSubmit={(e) => {
               e.preventDefault();
-              router.push("/chat");
+              router.push(`/chat?username=${username}`);
             }}
             styleSheet={{
               display: "flex",

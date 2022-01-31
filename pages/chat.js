@@ -2,16 +2,16 @@ import { Box, Text, TextField, Image, Button } from "@skynexui/components";
 import React, { useEffect } from "react";
 import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
+import { useRouter } from "next/router";
+import { SUPABASE_ANNON_KEY, SUPABASE_URL } from "../supabaseConfig";
 
-const SUPABASE_ANNON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzU2MjYxMiwiZXhwIjoxOTU5MTM4NjEyfQ.Xjqjup7PBOKJKaAGAKQYItGRcZ6Ejn9oLMseLL5xZkM";
-const SUPABASE_URL = "https://vihqwvmzjxptpghuuclt.supabase.co";
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANNON_KEY);
 
 export default function ChatPage() {
   const [mensagem, setMensagem] = React.useState("");
   const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
-  const username = "cesant3";
+  const roteamento = useRouter();
+  const username = roteamento.query.username;
 
   useEffect(() => {
     supabaseClient
@@ -53,7 +53,7 @@ export default function ChatPage() {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: appConfig.theme.colors.primary[500],
-        backgroundImage: `url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)`,
+        backgroundImage: `url(https://i0.wp.com/windowscustomization.com/wp-content/uploads/2018/11/rdr2-dynamic.gif?fit=750%2C364&quality=80&strip=all&ssl=1)`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundBlendMode: "multiply",
