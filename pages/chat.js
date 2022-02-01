@@ -4,6 +4,7 @@ import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 import { SUPABASE_ANNON_KEY, SUPABASE_URL } from "../supabase/supabaseConfig";
+import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANNON_KEY);
 
@@ -127,6 +128,7 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
+            <ButtonSendSticker />
           </Box>
         </Box>
       </Box>
